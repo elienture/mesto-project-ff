@@ -1,3 +1,6 @@
+import './pages/index.css';
+import { initialCards } from './scripts/cards';
+
 // константы
 const placesList = document.querySelector(".places__list");
 const card = document.querySelector("#card-template").content;
@@ -6,8 +9,8 @@ const card = document.querySelector("#card-template").content;
 
 function getCard(item, cardDelete) {
   const cardElement = card.querySelector(".card").cloneNode(true);
-  const cardImage = card.querySelector(".card__image");
-  const cardTitle = card.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
 
   cardImage.src = item.link;
   cardTitle.textContent = item.name;
