@@ -1,6 +1,7 @@
 import './pages/index.css';
 import { initialCards } from './scripts/cards.js';
 import {OpenPopup, ClosePopup, handleClick} from './scripts/modal.js';
+import { getCard, cardDelete, likeCard } from './scripts/card';
 
 
 // константы
@@ -31,37 +32,6 @@ const AddCardLinkInput = document.querySelector(".popup__input_type_url");
 
 
 // functions
-
-function getCard(item, cardDelete, likeCard) {
-  const cardElement = card.querySelector(".card").cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-
-  cardImage.src = item.link;
-  cardImage.alt = item.name
-  cardTitle.textContent = item.name;
-
-  const likeButton = cardElement.querySelector(".card__like-button");
-  likeButton.addEventListener("click", likeCard);
-
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", function () {
-    cardDelete(cardElement);
-  });
-
-  cardImage.addEventListener("click", openImageCard);
-
-  return cardElement;
-}
-
-function cardDelete(item) {
-  item.remove();
-}
-
-// Функция лайка карточки
-function likeCard(evt) {
-  evt.target.classList.toggle("card__like-button_is-active");
-}
 
 function addCard(item) {
   placesList.append(getCard(item, cardDelete, likeCard));
@@ -97,7 +67,7 @@ OpenCardButton.addEventListener('click', function(evt) {
 AddCardPopup.addEventListener('click', handleClick);
 
 
-//Расширенное изображения
+//Расширенное изображение
 
 function openImageCard(evt) {
   PopupImage.src = evt.target.src;
