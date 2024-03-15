@@ -87,7 +87,7 @@ function createCard (event) {
     name: addCardNameInput.value,
     link: addCardLinkInput.value
   };
-  const newCard = getCard(cardData, cardDelete, likeCard);
+  const newCard = getCard(cardData, cardDelete, likeCard, openImageCard);
   placesList.prepend(newCard);
   addCardForm.reset();
   closePopup(addCardPopup);
